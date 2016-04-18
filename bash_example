@@ -1,0 +1,72 @@
+#!/bin/bash
+
+#author Shenghao Jiang
+#since 04-15-2016
+#version 1.0
+
+#method to display usage
+display_usage() { 
+	echo "Usage of ./bash_example:" 
+	echo "  ./bash_example [--help|-h]"
+	echo "  ./bash_example --create-file=<filename> [--no-prompt] [--verbose]" 	
+	echo "  --create_file"
+	echo "      a file name"
+	echo "  --no-prompt"
+	echo "      no prompt will be shown"
+	echo "  --verbose"
+	echo "      prompt will be shown"
+}
+
+#method for prompt if file exist
+display_prompt(){
+while true;do                 #loop until correct input is entered
+    #read input and check
+		read -p "File exists. Overwrite (y/n) ?" yn
+  if [ ${#yn} -eq 1 ]
+  then
+    case $yn in
+        [y]* ) break;;
+        [n]* ) exit 0;;
+    esac
+  fi
+done
+}
+
+#Scenario1:handle 1 argument command with help
+if [ $# -eq 1 ] 
+then
+	if [[ ( $1 == "--help") ||  $1 == "-h" ]] 
+	then 
+		display_usage
+		exit 0										#exit 0 with successful input
+	fi 
+fi
+
+#Scenario2: handle 2 arguments command with [--no-prompt] [--verbose] options
+if [ $# -eq 2 ] 
+then
+	if [[ $1 = \--create-file* ]] #check argument starts with --create-file
+	then
+	if [ $2 == "--no-prompt" -o $2 == "--verbose" ]
+	then
+	filename=$(echo $1 | sed 's/.*=//') #cut filename from argument
+		if [ -f $filename ]
+		then
+			if [ $2 == "--verbose" ] #check verbose option
+			then 
+			echo "File already exists"
+			fi
+			display_prompt
+	  fi	
+	cat 50states > $filename     #copy 50states to new file
+	 if [ $2 == "--verbose" ]    #check verbose option
+ 	 then
+	 echo "File created"
+ 	 fi
+	exit 0;                      #exit 1 with sucessful input
+		fi
+	fi
+fi
+
+display_usage                  #defaut: for any bad command line input
+exit 1                         # exit 1 with bad input
