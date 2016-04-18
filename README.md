@@ -2,7 +2,9 @@
 
 ##Problem 1
 1.In bash shell script, I read command line flags and output usages in my own way.That is, in problem 2 and 3, I read flags use go's built-in flags class, which is more convenient.
+
 2.I do not quite understand why we need prompt "File removed", since we only need to overwrite file if it exists.
+
 3.I am not sure if I can use file 50states and cat its content to a new file. If this is not allowed, I would a create long string array with names of 50 states, but which is not concise .
 
 ##Problem 2
