@@ -1,4 +1,4 @@
-#Thoughts and concerns in the projects
+#Thoughts and concerns about the projects
 
 ##Problem 1
 1.In bash shell script, I read command line flags and output usages in my own way.That is, in problem 2 and 3, I read flags use go's built-in flags class, which is more convenient.
@@ -17,6 +17,6 @@
 2.I learned the basic golang in a few hours and writing these code did not take me  very long. I think golang is very easy to read and easy to write.
 
 ##Problem 3
-1.I have some concerns about this program. I can successfully run the program on the url provided on github, but when I run this on other website, some html code will count towards word frequency.
+1.I have some concerns about this problem. I can successfully run the program on the url provided on github, but when I run this on other website, some html code will count towards word frequency.
 
 2.I think I can solve this problem but it may take a few days. I am new to golang but I would like to learn new programming languages and accept new challenges.
